@@ -7,8 +7,12 @@
     "react",
     "starter"
   ],
-  "main": "src/index.tsx",
+  "main": "src/index.js",
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.16.16",
     "loader-utils": "3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -23,13 +27,15 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "prettier": "3.1.0",
     "typescript": "4.4.2"
   },
   "scripts": {
     "start": "set PORT=4000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "npx prettier --write ."
   },
   "browserslist": [
     ">0.2%",
