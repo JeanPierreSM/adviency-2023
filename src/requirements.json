@@ -1,0 +1,97 @@
+{
+  "fileVersion": 1,
+  "requirementsByDay": [
+    {
+      "dayNumber": 1,
+      "info": "Para calentar motores vamos a mantener las cosas simples, mostremos una lista de regalos, 3 elementos, fijos, sin nada más."
+    },
+    {
+      "dayNumber": 2,
+      "info": "Nuestra app se ve muy poco navideña, demosle unos colores más lindos, rojo, verde, amarillo! Podemos ponernos creativos con lo que queramos!"
+    },
+    {
+      "dayNumber": 3,
+      "info": "Estámos generosos, vamos a agregar un formulario con un input para escribir nuestro regalo y un botón para agregarlo a nuestra lista, todavía no los podemos borrar, pero... es navidad! Por que querríamos borrar regalos?"
+    },
+    {
+      "dayNumber": 4,
+      "info": "Papa noel no estuvo muy contento con la demanda de regalos, vamos a tener que agregar un botón de eliminar a cada elemento para poder borrarlos individualmente."
+    },
+    {
+      "dayNumber": 5,
+      "info": "La gente está muy indecisa y agrega muchos regalos y después los debe borrar de a uno! Agreguemos un botón para eliminar todos los regalos a la vez!"
+    },
+    {
+      "dayNumber": 6,
+      "info": "Nuestra aplicación no se ve muy bien cuando no hay regalos, agreguemos un mensaje alentando a agregar regalos cuando no haya ninguno!"
+    },
+    {
+      "dayNumber": 7,
+      "info": "Tuvimos algunos reportes de regalos vacíos o repetidos, asegurmosnos que la gente solo pueda agregar un regalo si escribió algo y si ese regalo no está ya en la lista!"
+    },
+    {
+      "dayNumber": 8,
+      "info": "Cometimos un error el día anterior, la gente quiere agregar regalos repetidos para regalarselos a diferentes personas, agreguemos un campo al lado del input de texto para poner la cantidad de unidades del regalo que deberíamos comprar."
+    },
+    {
+      "dayNumber": 9,
+      "info": "La gente está triste por que al cerrar la aplicación pierde todos sus regalos. Usemos localStorage para guardar los regalos en el dispositivo del usuario y cargarlos cuando vuelve!"
+    },
+    {
+      "dayNumber": 10,
+      "info": "Las palabras dicen mucho pero las imágenes más! Agreguemos un campo donde podamos pegar un link de imágen para cada regalo y mostremoslo en la lista."
+    },
+    {
+      "dayNumber": 11,
+      "info": "Nuestro formulario tiene muchas cosas y molesta a la vista de los usuarios, pasemoslo a un modal / drawer o lo que quieras y pongamos un botón de 'Agregar regalo' que lo muestre."
+    },
+    {
+      "dayNumber": 12,
+      "info": "La gente no recuerda que regalo corresponde a cada quien, agreguemos un campo para destinatario y mostremoslo."
+    },
+    {
+      "dayNumber": 13,
+      "info": "Nuestros usuarios se ponen muy contentos y se equivocan al cargar regalos, agreguemos un botón editar que nos permita cambiar regalos ya agregados."
+    },
+    {
+      "dayNumber": 14,
+      "info": "Nuestra aplicación no es muy accesible, hagamos que podamos agregar, borrar y editar regalos sin tocar el mouse."
+    },
+    {
+      "dayNumber": 15,
+      "info": "Pronto tendremos que preparar una api para nuestra aplicación, preparemos un método para traernos nuestros regalos que use promesas o async await."
+    },
+    {
+      "dayNumber": 16,
+      "info": "La gente está perdiendo la creatividad y necesita una ayuda, agreguemos un botón para obtener un regalo aleatorio para el campo 'regalo', podés tener una lista fija de regalos, no es necesario que sean generados."
+    },
+    {
+      "dayNumber": 17,
+      "info": "Nos olvidamos de agregar un campo de precio para nuestros regalos! Aseguremosnos de mostrar el precio correcto tomando en cuenta la cantidad de unidades del regalo."
+    },
+    {
+      "dayNumber": 18,
+      "info": "La gente agrega muchos regalos y necesita saber el total de lo que gastaría, pongamos el total."
+    },
+    {
+      "dayNumber": 19,
+      "info": "La gente quiere hacer el mismo regalo pero a diferentes personas o en diferentes cantidades, agreguemos un botón de duplicar que abra el modal precargado."
+    },
+    {
+      "dayNumber": 20,
+      "info": "Queremos tener una lista de regalos para ir a comprar pero no queremos que tenga los botones o precios, agreguemos un botón de previsualizar que nos abra un modal."
+    },
+    {
+      "dayNumber": 21,
+      "info": "Fuimos a comprar los regalos pero no teniamos datos en el celular, no queremos que le pase a alguien más, agreguemos un botón de imprimir a esa lista."
+    },
+    {
+      "dayNumber": 22,
+      "info": "Levantemos el espíritu navideño agregando un sonido navideño de fondo. No tan alto, tiene que estar deshabilitado por defecto y el usuario puede habilitarlo."
+    },
+    {
+      "dayNumber": 23,
+      "info": "Ya casi es navidad! Agreguemos unos copitos de nieve a nuestra app para darle el último toque navideño."
+    }
+  ]
+}

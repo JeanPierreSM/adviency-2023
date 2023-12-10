@@ -1,11 +1,12 @@
 import "./styles.css";
-import MainContainer from "./day1/components/MainContainer";
+import SinglePage from "./day1/SinglePage";
+
+const ACTIVE_DAY = 1;
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Regalos:</h1>
-      <MainContainer />
+      <SinglePage activeDay={ACTIVE_DAY} />
     </div>
   );
 }
