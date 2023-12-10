@@ -48,7 +48,7 @@ const AboutDayRequirementModal = ({
             />
           </Text>
           <Text fontSize="l" textAlign="center">
-            v0.2
+            v0.3
           </Text>
         </ModalBody>
         <ModalFooter>

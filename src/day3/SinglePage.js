@@ -16,18 +16,30 @@ import { InfoIcon } from "@chakra-ui/icons";
 import AboutDayRequirementModal from "./components/AboutDayRequirementModal";
 import requirementsData from "../requirements.json";
 import ChristmasBackground from "../images/christmas-background.jpg";
+import NewGiftPanel from "./components/NewGiftPanel";
 
-const gifts = [
+const initialGifts = [
   { id: 1, name: "Medias" },
   { id: 2, name: "Caramelos" },
   { id: 3, name: "Vitel Tone" },
 ];
 
 const SinglePage = ({ activeDay }) => {
+  const [gifts, setGifts] = useState(initialGifts);
   const [openAboutModal, setOpenAboutModal] = useState(false);
   const activeDayRequirement = requirementsData.requirementsByDay.find(
     (item) => item.dayNumber === activeDay,
   );
+
+  const saveNewGift = (giftName) => {
+    setGifts([
+      ...gifts,
+      {
+        id: gifts.length + 1,
+        name: giftName,
+      },
+    ]);
+  };
 
   return (
     <VStack
@@ -58,7 +70,7 @@ const SinglePage = ({ activeDay }) => {
         <Tooltip label="Acerca del Requerimiento" hasArrow bg="#FF0000">
           <IconButton
             onClick={() => setOpenAboutModal(true)}
-            icon={<InfoIcon color="white" />}
+            icon={<InfoIcon color="#CBD5E0" />}
             bg="#FF0000"
             isRound="true"
             size="sm"
@@ -72,15 +84,15 @@ const SinglePage = ({ activeDay }) => {
               REGALOS
             </Heading>
           </CardHeader>
-          <CardBody maxH="500px" overflowY="auto">
-            <ul>
+          <CardBody px={2}>
+            <NewGiftPanel handleSave={(giftName) => saveNewGift(giftName)} />
+            <Box as="ul" maxH="500px" overflowY="auto" mt={6}>
               {gifts.map((gift, index) => (
                 <>
                   <Box
                     as="li"
                     key={gift.id}
                     py={4}
-                    px={8}
                     color="#2D3748"
                     fontWeight="bold"
                   >
@@ -93,7 +105,7 @@ const SinglePage = ({ activeDay }) => {
                   )}
                 </>
               ))}
-            </ul>
+            </Box>
           </CardBody>
         </Card>
       </HStack>
