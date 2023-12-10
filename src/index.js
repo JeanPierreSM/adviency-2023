@@ -10,5 +10,5 @@ root.render(
   <ChakraProvider>
     <CSSReset />
     <App />
-  </ChakraProvider>,
+  </ChakraProvider>
 );
