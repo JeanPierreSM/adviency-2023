@@ -1,5 +1,5 @@
 {
-  "fileVersion": 1,
+  "fileVersion": 1.1,
   "requirementsByDay": [
     {
       "dayNumber": 1,
@@ -27,7 +27,7 @@
     },
     {
       "dayNumber": 7,
-      "info": "Tuvimos algunos reportes de regalos vacíos o repetidos, asegurmosnos que la gente solo pueda agregar un regalo si escribió algo y si ese regalo no está ya en la lista!"
+      "info": "Tuvimos algunos reportes de regalos vacíos o repetidos, asegurémonos que la gente solo pueda agregar un regalo si escribió algo y si ese regalo no está ya en la lista!"
     },
     {
       "dayNumber": 8,
