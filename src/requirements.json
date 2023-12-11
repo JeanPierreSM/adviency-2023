@@ -1,5 +1,5 @@
 {
-  "fileVersion": 1.1,
+  "fileVersion": 1.2,
   "requirementsByDay": [
     {
       "dayNumber": 1,
@@ -39,7 +39,7 @@
     },
     {
       "dayNumber": 10,
-      "info": "Las palabras dicen mucho pero las imágenes más! Agreguemos un campo donde podamos pegar un link de imágen para cada regalo y mostremoslo en la lista."
+      "info": "Las palabras dicen mucho pero las imágenes más! Agreguemos un campo donde podamos pegar un link de imagen para cada regalo y mostremoslo en la lista."
     },
     {
       "dayNumber": 11,
