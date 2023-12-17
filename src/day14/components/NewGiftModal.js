@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Input, Flex, Button } from "@chakra-ui/react";
 import {
   Modal,
@@ -17,6 +17,8 @@ import {
 } from "@chakra-ui/react";
 
 const NewGiftModal = ({ isOpen, onSave, onClose, giftToBeEdited }) => {
+  const inputRef = useRef();
+
   const [giftData, setGiftData] = useState(
     giftToBeEdited || {
       name: "",
@@ -39,7 +41,7 @@ const NewGiftModal = ({ isOpen, onSave, onClose, giftToBeEdited }) => {
   };
 
   return (
-    <Modal isCentered isOpen={isOpen} onClose={onClose} h="520px">
+    <Modal isCentered isOpen={isOpen} onClose={onClose} initialFocusRef={inputRef} h="520px">
       <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(3px) " />
       <ModalContent bg="red.50" h="420px">
         <ModalHeader>Agregar nuevo regalo</ModalHeader>
@@ -50,6 +52,7 @@ const NewGiftModal = ({ isOpen, onSave, onClose, giftToBeEdited }) => {
               <FormLabel>Descripción</FormLabel>
               <Input
                 value={giftData.name}
+                ref={inputRef}
                 focusBorderColor="#378b29"
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 placeholder="¿Una PS5 quizás?"
