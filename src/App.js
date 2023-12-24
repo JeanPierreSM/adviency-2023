@@ -1,7 +1,7 @@
 import "./styles.css";
-import SinglePage from "./day14/SinglePage";
+import SinglePage from "./day15/SinglePage";
 
-const ACTIVE_DAY = 14;
+const ACTIVE_DAY = 15;
 
 export default function App() {
   return (
