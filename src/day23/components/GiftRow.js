@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Tooltip, IconButton, Image, Spinner } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon, CopyIcon } from "@chakra-ui/icons";
 import ConfirmDeleteAlert from "./ConfirmDeleteAlert";
+import DefaultGiftSnapshot from "../../images/default-christmas-gift-snapshot.jpg";
 
 const GiftRow = ({
   gift,
@@ -29,7 +30,7 @@ const GiftRow = ({
         <Box w={12} h={12} mr={6}>
           {isLoading && <Spinner color="red.500" />}
           <Image
-            src={gift.link}
+            src={gift.link || DefaultGiftSnapshot}
             borderRadius="full"
             alt={`#${index}-image`}
             onLoad={() => setIsLoading(false)}
