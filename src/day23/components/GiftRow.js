@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Tooltip, IconButton, Image, Spinner } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon, CopyIcon } from "@chakra-ui/icons";
+import ConfirmDeleteAlert from "./ConfirmDeleteAlert";
 
 const GiftRow = ({
   gift,
@@ -11,6 +12,8 @@ const GiftRow = ({
   hidePriceAndActionButtons = false,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] =
+    useState(false);
 
   return (
     <Box
@@ -79,7 +82,7 @@ const GiftRow = ({
           </Tooltip>
           <Tooltip label="Eliminar" hasArrow bg="#FF0000">
             <IconButton
-              onClick={() => deleteGift(gift.id)}
+              onClick={() => setIsDeleteConfirmationOpen(true)}
               icon={<DeleteIcon />}
               bg="#FF0000"
               isRound="true"
@@ -88,6 +91,15 @@ const GiftRow = ({
             />
           </Tooltip>
         </Box>
+      )}
+      {isDeleteConfirmationOpen && (
+        <ConfirmDeleteAlert
+          onCloseDeleteConfirmation={() => setIsDeleteConfirmationOpen(false)}
+          onDeleteConfirmation={() => {
+            deleteGift(gift.id);
+            setIsDeleteConfirmationOpen(false);
+          }}
+        />
       )}
     </Box>
   );

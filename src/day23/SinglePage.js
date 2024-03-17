@@ -27,6 +27,7 @@ import GiftRow from "./components/GiftRow";
 import PreviewModal from "./components/PreviewModal";
 import { Volume2, VolumeX } from "react-feather";
 import Snowflake from "./components/Snowflake";
+import ConfirmDeleteAlert from "./components/ConfirmDeleteAlert";
 
 const TOTAL_SNOWFLAKES = 16;
 
@@ -41,6 +42,8 @@ const SinglePage = ({ activeDay }) => {
   const [loadingGifts, setLoadingGifts] = useState(false);
   const [openPreviewModal, setOpenPreviewModal] = useState(false);
   const [muteSound, setMuteSound] = useState(true);
+  const [isDeleteAllConfirmationOpen, setIsDeleteAllConfirmationOpen] =
+    useState(false);
 
   const activeDayRequirement = requirementsData.requirementsByDay.find(
     (item) => item.dayNumber === activeDay,
@@ -272,7 +275,7 @@ const SinglePage = ({ activeDay }) => {
               colorScheme="red"
               width="100%"
               ml={1}
-              onClick={() => deleteAllGifts()}
+              onClick={() => setIsDeleteAllConfirmationOpen(true)}
               isDisabled={!gifts.length}
             >
               Borrar todo
@@ -322,6 +325,18 @@ const SinglePage = ({ activeDay }) => {
             setOpenPreviewModal(false);
           }}
           gifts={gifts}
+        />
+      )}
+      {isDeleteAllConfirmationOpen && (
+        <ConfirmDeleteAlert
+          onCloseDeleteConfirmation={() =>
+            setIsDeleteAllConfirmationOpen(false)
+          }
+          onDeleteConfirmation={() => {
+            deleteAllGifts();
+            setIsDeleteAllConfirmationOpen(false);
+          }}
+          isBulkDelete
         />
       )}
     </VStack>
