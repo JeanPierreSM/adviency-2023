@@ -66,6 +66,7 @@ const NewGiftModal = ({
             recipient: "",
           },
   );
+  const [chosenGifts, setChosenGifts] = useState([]);
 
   const handleInputChange = (key, value) => {
     setGiftData({
@@ -80,8 +81,15 @@ const NewGiftModal = ({
   };
 
   const handleSelectRandomGift = () => {
-    const randomIndex = Math.floor(Math.random() * randomGifts.length);
-    const randomGift = randomGifts[randomIndex];
+    let availableGifts = randomGifts.filter(gift => !chosenGifts.includes(gift));
+    if (availableGifts.length === 0) {
+      availableGifts = randomGifts;
+      setChosenGifts([]);
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableGifts.length);
+    const randomGift = availableGifts[randomIndex];
+    setChosenGifts(prevSelectedGifts => [...prevSelectedGifts, randomGift]);
     handleInputChange("name", randomGift);
   };
 
