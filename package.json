@@ -20,7 +20,8 @@
     "react-dom": "18.2.0",
     "react-feather": "^2.0.10",
     "react-scripts": "5.0.1",
-    "react-to-print": "^2.14.15"
+    "react-to-print": "^2.14.15",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@types/react": "18.2.37",

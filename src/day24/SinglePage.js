@@ -25,12 +25,35 @@ import { Spinner } from "@chakra-ui/react";
 import GiftRow from "./components/GiftRow";
 import PreviewModal from "./components/PreviewModal";
 import { Volume2, VolumeX } from "react-feather";
-import Snowflake from "./components/Snowflake";
+import RandomSnowflakes from "./components/RandomSnowflakes";
 import ConfirmDeleteAlert from "./components/ConfirmDeleteAlert";
+import styled from "styled-components";
 
-const TOTAL_SNOWFLAKES = 16;
+const StyledVStack = styled(VStack)`
+  background-image: url(${(props) => props.bgImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
 
-const SinglePage = ({ activeDay }) => {
+const StyledCard = styled(Card)`
+  padding: 20px;
+  border-radius: 1rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 36rem;
+`;
+
+const SinglePage = () => {
   const buttonRef = useRef();
 
   const [gifts, setGifts] = useState([]);
@@ -117,18 +140,6 @@ const SinglePage = ({ activeDay }) => {
       .toFixed(2);
   };
 
-  const snowFlakeRandomPosition = (index) => {
-    const position = {
-      top: `${Math.random() * 80}vh`,
-      left:
-        index < TOTAL_SNOWFLAKES / 2
-          ? `${Math.random() * 50}%`
-          : `${50 + Math.random() * 50}%`,
-    };
-
-    return position;
-  };
-
   useEffect(() => {
     buttonRef.current.focus();
     get();
@@ -146,137 +157,114 @@ const SinglePage = ({ activeDay }) => {
   }, [muteSound]);
 
   return (
-    <VStack
-      bgImage={ChristmasBackground}
-      bgSize="cover"
-      bgPosition="center"
-      bgRepeat="no-repeat"
-      height="100vh"
-      flex={1}
-      display="flex"
-      flexDirection="column"
-      h="100vh"
-      w="100vw"
-      alignItems="center"
-      justifyContent="center"
-      position="relative"
-    >
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        right="0"
-        bottom="0"
-        pointerEvents="none"
-      >
-        {Array.from({ length: TOTAL_SNOWFLAKES }, (_, index) =>
-          snowFlakeRandomPosition(index),
-        ).map((position, index) => (
-          <Snowflake key={index} position={position} />
-        ))}
-      </Box>
-      <HStack my={8} width="580px">
-        <Card bg="#74d680" p={6} borderRadius="xl" width="100%">
-          <CardHeader p={0}>
-            <Heading size="lg" color="#378b29">
-              Adviency 2023
-            </Heading>
-          </CardHeader>
-          <CardBody px={2}>
-            <Flex justify="space-between" align="center">
-              <Flex flex="1">
-                <Button
-                  colorScheme="red"
-                  ml={1}
-                  onClick={() => setOpenNewGiftModal(true)}
-                  ref={buttonRef}
-                  width="100%"
-                >
-                  Agregar regalo
-                </Button>
-              </Flex>
-              <Flex>
-                <IconButton
-                  colorScheme="red"
-                  icon={<InfoIcon style={{ color: "black" }} size={17} />}
-                  onClick={() => setOpenAboutModal(true)}
-                  ml={1}
-                />
-              </Flex>
-              <Flex>
-                <IconButton
-                  colorScheme="red"
-                  icon={
-                    muteSound ? (
-                      <VolumeX style={{ color: "black" }} size={17} />
-                    ) : (
-                      <Volume2 style={{ color: "black" }} size={17} />
-                    )
-                  }
-                  onClick={() => setMuteSound(!muteSound)}
-                  ml={1}
-                />
-              </Flex>
+    <StyledVStack bgImage={ChristmasBackground}>
+      <RandomSnowflakes />
+      <StyledCard bg="#74d680">
+        <CardHeader p={0}>
+          <Heading size="lg" color="#378b29">
+            Adviency 2023
+          </Heading>
+        </CardHeader>
+        <CardBody px={2}>
+          {/* Header Actions */}
+          <Flex justify="space-between" align="center">
+            <Flex flex="1">
+              <Button
+                colorScheme="red"
+                ml={1}
+                onClick={() => setOpenNewGiftModal(true)}
+                ref={buttonRef}
+                width="100%"
+              >
+                Agregar regalo
+              </Button>
             </Flex>
+            <Flex>
+              <IconButton
+                colorScheme="red"
+                icon={<InfoIcon style={{ color: "black" }} size={17} />}
+                onClick={() => setOpenAboutModal(true)}
+                ml={1}
+              />
+            </Flex>
+            <Flex>
+              <IconButton
+                colorScheme="red"
+                icon={
+                  muteSound ? (
+                    <VolumeX style={{ color: "black" }} size={17} />
+                  ) : (
+                    <Volume2 style={{ color: "black" }} size={17} />
+                  )
+                }
+                onClick={() => setMuteSound(!muteSound)}
+                ml={1}
+              />
+            </Flex>
+          </Flex>
 
-            <Box as="ul" maxH="500px" overflowY="auto" my={8}>
-              {(gifts || []).map((gift, index) => (
-                <>
-                  <GiftRow
-                    gift={gift}
-                    index={index}
-                    handleEditGift={handleEditGift}
-                    deleteGift={deleteGift}
-                    handleDuplicateGift={handleDuplicateGift}
-                  />
-                  {index < gifts.length - 1 && (
-                    <Box bg="white">
-                      <Divider orientation="horizontal" />
-                    </Box>
-                  )}
-                </>
-              ))}
-              {!gifts.length && !loadingGifts && (
-                <Box color="#2D3748" fontWeight="bold">
-                  No hay regalos grinch! Agregá algo!
-                </Box>
-              )}
-              {loadingGifts && <Spinner color="red.500" />}
-            </Box>
-            {gifts.length > 0 && (
-              <Box pb={4}>
-                <Box bg="black">
-                  <Divider orientation="horizontal" />
-                </Box>
-                <Box
-                  color="#2D3748"
-                  fontWeight="bold"
-                  pt={2}
-                >{`Total: $${getTotal()}`}</Box>
+          {/* Gift Rows */}
+          <Box as="ul" maxH="416px" overflowY="auto" my={8}>
+            {loadingGifts && <Spinner color="red.500" />}
+            {(gifts || []).map((gift, index) => (
+              <Box key={gift.id}>
+                <GiftRow
+                  gift={gift}
+                  index={index}
+                  handleEditGift={handleEditGift}
+                  deleteGift={deleteGift}
+                  handleDuplicateGift={handleDuplicateGift}
+                />
+                {index < gifts.length - 1 && (
+                  <Box bg="white">
+                    <Divider orientation="horizontal" />
+                  </Box>
+                )}
+              </Box>
+            ))}
+            {!gifts.length && !loadingGifts && (
+              <Box color="#2D3748" fontWeight="bold">
+                No hay regalos grinch! Agregá algo!
               </Box>
             )}
-            <Button
-              colorScheme="red"
-              width="100%"
-              ml={1}
-              onClick={() => setIsDeleteAllConfirmationOpen(true)}
-              isDisabled={!gifts.length}
-            >
-              Borrar todo
-            </Button>
-            <Button
-              colorScheme="red"
-              width="100%"
-              ml={1}
-              mt={4}
-              onClick={() => setOpenPreviewModal(true)}
-              isDisabled={!gifts.length}
-            >
-              Previsualizar
-            </Button>
-          </CardBody>
-        </Card>
-      </HStack>
+          </Box>
+
+          {/* Total */}
+          {gifts.length > 0 && (
+            <Box pb={4}>
+              <Box bg="black">
+                <Divider orientation="horizontal" />
+              </Box>
+              <Box
+                color="#2D3748"
+                fontWeight="bold"
+                pt={2}
+              >{`Total: $${getTotal()}`}</Box>
+            </Box>
+          )}
+
+          {/* Footer Actions */}
+          <Button
+            colorScheme="red"
+            width="100%"
+            ml={1}
+            onClick={() => setIsDeleteAllConfirmationOpen(true)}
+            isDisabled={!gifts.length}
+          >
+            Borrar todo
+          </Button>
+          <Button
+            colorScheme="red"
+            width="100%"
+            ml={1}
+            mt={4}
+            onClick={() => setOpenPreviewModal(true)}
+            isDisabled={!gifts.length}
+          >
+            Previsualizar
+          </Button>
+        </CardBody>
+      </StyledCard>
       <audio id="audio">
         <source src="/jingle-bells-bells-only.mp3" type="audio/mpeg" />
       </audio>
@@ -322,7 +310,7 @@ const SinglePage = ({ activeDay }) => {
           isBulkDelete
         />
       )}
-    </VStack>
+    </StyledVStack>
   );
 };
 

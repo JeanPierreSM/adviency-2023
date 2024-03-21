@@ -81,7 +81,9 @@ const NewGiftModal = ({
   };
 
   const handleSelectRandomGift = () => {
-    let availableGifts = randomGifts.filter(gift => !chosenGifts.includes(gift));
+    let availableGifts = randomGifts.filter(
+      (gift) => !chosenGifts.includes(gift),
+    );
     if (availableGifts.length === 0) {
       availableGifts = randomGifts;
       setChosenGifts([]);
@@ -89,7 +91,7 @@ const NewGiftModal = ({
 
     const randomIndex = Math.floor(Math.random() * availableGifts.length);
     const randomGift = availableGifts[randomIndex];
-    setChosenGifts(prevSelectedGifts => [...prevSelectedGifts, randomGift]);
+    setChosenGifts((prevSelectedGifts) => [...prevSelectedGifts, randomGift]);
     handleInputChange("name", randomGift);
   };
 

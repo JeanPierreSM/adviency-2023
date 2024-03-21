@@ -3,6 +3,16 @@ import { Box, Tooltip, IconButton, Image, Spinner } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon, CopyIcon } from "@chakra-ui/icons";
 import ConfirmDeleteAlert from "./ConfirmDeleteAlert";
 import DefaultGiftSnapshot from "../../images/default-christmas-gift-snapshot.jpg";
+import styled from "styled-components";
+
+const StyledListItem = styled.li`
+  padding-top: 1rem; /* Equivalent to py={4} */
+  padding-bottom: 1rem; /* Equivalent to py={4} */
+  color: #2d3748;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const GiftRow = ({
   gift,
@@ -17,15 +27,7 @@ const GiftRow = ({
     useState(false);
 
   return (
-    <Box
-      as="li"
-      key={gift.id}
-      py={4}
-      color="#2D3748"
-      fontWeight="bold"
-      display="flex"
-      justifyContent="space-between"
-    >
+    <StyledListItem>
       <Box display="flex" flexDirection="row">
         <Box w={12} h={12} mr={6}>
           {isLoading && <Spinner color="red.500" />}
@@ -102,7 +104,7 @@ const GiftRow = ({
           }}
         />
       )}
-    </Box>
+    </StyledListItem>
   );
 };
 
